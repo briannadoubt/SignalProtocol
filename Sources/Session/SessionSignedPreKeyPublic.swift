@@ -14,7 +14,7 @@ import Foundation
  The public part of the key pair is signed with the identity key of the creator
  to provide authentication.
  */
-struct SessionSignedPreKeyPublic {
+public struct SessionSignedPreKeyPublic {
 
     /// The id of the signed pre key
     public let id: UInt32
@@ -93,7 +93,7 @@ extension SessionSignedPreKeyPublic: Equatable {
      - parameters rhs: The second public signed pre key
      - returns: `True`, if the public signed pre keys match
      */
-    static func ==(lhs: SessionSignedPreKeyPublic, rhs: SessionSignedPreKeyPublic) -> Bool {
+    public static func ==(lhs: SessionSignedPreKeyPublic, rhs: SessionSignedPreKeyPublic) -> Bool {
         return lhs.id == rhs.id &&
             lhs.key == rhs.key &&
             lhs.signature == rhs.signature &&

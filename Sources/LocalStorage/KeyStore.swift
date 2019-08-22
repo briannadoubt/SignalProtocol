@@ -71,7 +71,7 @@ extension KeyStore {
      - returns: The public data of the generated signed pre key for uploading
      - throws: `SignalError`
     */
-    public func updateSignedPrekey(timestamp: UInt64 = UInt64(Date().timeIntervalSince1970)) throws -> Data {
+    public func updateSignedPrekey(timestamp: UInt64 = UInt64(Date().timeIntervalSince1970)) throws -> SessionSignedPreKeyPublic {
         let currentId = signedPreKeyStore.lastId
         let nextId = currentId &+ 1
         let privateKey = try identityKeyStore.getIdentityKey().privateKey
@@ -88,7 +88,7 @@ extension KeyStore {
             try signedPreKeyStore.removeSignedPreKey(for: oldId)
         }
 
-        return try key.publicKey.protoData()
+        return try key.publicKey
     }
 
     /**

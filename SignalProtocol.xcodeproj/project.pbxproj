@@ -728,7 +728,6 @@
 				CEB45A57201CB3AE002BB845 /* Sources */,
 				CEB45A58201CB3AE002BB845 /* Frameworks */,
 				CEB45A59201CB3AE002BB845 /* Resources */,
-				8B7C075EB17967B331B6CAEC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -926,28 +925,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8B7C075EB17967B331B6CAEC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SignalProtocol Tests/Pods-SignalProtocol Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CommonCryptoModule-iOS/CommonCryptoModule.framework",
-				"${BUILT_PRODUCTS_DIR}/Curve25519-iOS/Curve25519.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf-iOS/SwiftProtobuf.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonCryptoModule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Curve25519.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignalProtocol Tests/Pods-SignalProtocol Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92F9DA4E9B587E0A0227DF46 /* [CP] Check Pods Manifest.lock */ = {
