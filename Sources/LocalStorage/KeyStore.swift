@@ -88,7 +88,7 @@ extension KeyStore {
             try signedPreKeyStore.removeSignedPreKey(for: oldId)
         }
 
-        return try key.publicKey
+        return key.publicKey
     }
 
     /**
@@ -102,14 +102,14 @@ extension KeyStore {
      - returns: The public data of the pre keys for uploading
      - throws: `SignalError` errors
     */
-    public func createPreKeys(count: Int) throws -> [Data] {
+    public func createPreKeys(count: Int) throws -> [SessionPreKeyPublic] {
         let start = preKeyStore.lastId &+ 1
         let keys = try SignalCrypto.generatePreKeys(start: start, count: count)
         for key in keys {
             try preKeyStore.store(preKey: key)
         }
         preKeyStore.lastId = start &+ UInt32(count)
-        return try keys.map { try $0.publicKey.protoData() }
+        return keys.map { $0.publicKey }
     }
 
     /**
