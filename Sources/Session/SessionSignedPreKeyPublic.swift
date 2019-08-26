@@ -35,7 +35,7 @@ public struct SessionSignedPreKeyPublic {
      - parameter timestamp: The time when the key was created
      - parameter signature: The signature of the public key of the key pair
      */
-    init(id: UInt32, timestamp: UInt64, key: PublicKey, signature: Data) {
+    public init(id: UInt32, timestamp: UInt64, key: PublicKey, signature: Data) {
         self.id = id
         self.key = key
         self.timestamp = timestamp

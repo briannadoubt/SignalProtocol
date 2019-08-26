@@ -64,7 +64,7 @@ public struct SessionPreKeyBundle {
      - parameter signedPreKey: The signed pre key
      - parameter identityKey: The identity key of the remote party
      */
-    init(preKey: SessionPreKeyPublic,
+    public init(preKey: SessionPreKeyPublic,
          signedPreKey: SessionSignedPreKeyPublic,
          identityKey: PublicKey) {
 
