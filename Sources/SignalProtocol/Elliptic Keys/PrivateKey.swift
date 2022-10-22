@@ -24,20 +24,23 @@ public struct PrivateKey {
      - throws: `SignalError` of type `invalidProtoBuf`
      */
     init(point: Data) throws {
-        guard point.count == Curve25519.keyLength else {
+        guard point.count == Constants.keyLength else {
             throw SignalError(.invalidProtoBuf, "Invalid key length: \(point.count)")
         }
+        
         guard point[0] & 0b00000111 == 0 else {
             throw SignalError(.invalidProtoBuf, "Invalid private key (byte 0 == \(point[0])")
         }
 
-        let lastByteIndex = Curve25519.keyLength - 1
+        let lastByteIndex = Constants.keyLength - 1
         guard point[lastByteIndex] & 0b10000000 == 0 else {
             throw SignalError(.invalidProtoBuf, "Invalid private key (byte \(lastByteIndex) == \(point[lastByteIndex])")
         }
+        
         guard point[lastByteIndex] & 0b01000000 != 0 else {
             throw SignalError(.invalidProtoBuf, "Invalid private key (byte \(lastByteIndex) == \(point[lastByteIndex])")
         }
+        
         key = point
     }
 
@@ -50,7 +53,7 @@ public struct PrivateKey {
      - throws: `SignalError` errors
      */
     init(unverifiedPoint point: Data) throws {
-        guard point.count == Curve25519.keyLength else {
+        guard point.count == Constants.keyLength else {
             throw SignalError(.invalidLength, "Invalid key length: \(point.count)")
         }
         key = point
@@ -61,7 +64,7 @@ public struct PrivateKey {
      - throws: Any error from `SignalCrypto.random(bytes:)`
      */
     public init() throws {
-        var random = try SignalCrypto.random(bytes: Curve25519.keyLength)
+        var random = try SignalCrypto.random(bytes: Constants.keyLength)
         random[0] &= 248 // 0b11111000
         random[31] = (random[31] & 127) | 64 // & 0b01111111 | 0b01000000
         self.key = random
